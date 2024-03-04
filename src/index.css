@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root,
+#root div {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.controls {
+  width: fit-content;
+  height: fit-content;
+  min-width: unset !important;
+  min-height: unset !important;
+  display: flex;
+  justify-content: row nowrap;
+  gap: 8px;
+  margin: 8px;
+}
+
+.controls button {
+  padding: 4px 10px;
+}
