@@ -30,9 +30,9 @@ export const Starfield = ( props ) => {
 		// 	hyperspeedAnimation.play();
 		// }
 
-		// starfieldAnimation.play();
+		starfieldAnimation.play();
 
-		starfieldAnimation.startAt(1)
+		// starfieldAnimation.startAt(1)
 
 		// starfieldAnimation.timeScale = props.acelerationValue;
 		// if( state !== actualState ) {
@@ -43,7 +43,7 @@ export const Starfield = ( props ) => {
 		// 	console.log("StarfieldAnimation: ", starfieldAnimation);
 		// }
 
-    mixer.update(delta);
+    mixer.update( props.acelerationValue );
   });
 
 

@@ -14,7 +14,7 @@ function App() {
   const [acelerationValue, setAcelerationValue] = useState(0)
 
   const handleAceleration = (event) => {
-    const aceleration = Math.pow((event.target.value / 101), 2);
+    const aceleration = (event.target.value / 1001);
     
     setAcelerationValue(aceleration);
   };
@@ -25,13 +25,13 @@ function App() {
         <color attach="background" args={["black"]} />
 
         <Suspense fallback={<Loader />}>
-          <Starfield animation={animation} animations={animations} acelerationValue={acelerationValue} />
+          <Starfield animation={ animation } animations={ animations } acelerationValue={ acelerationValue } />
         </Suspense>
       </Canvas>
 
       <div className='controls'>
-        <div className='acelerator'><input type="range" onChange={handleAceleration} defaultValue={0} /></div>
-        <div className='aceleration_value'>{ `Aceleración: ${acelerationValue}` }</div>
+        <div className='acelerator'><input type="range" onChange={ handleAceleration } defaultValue={0} /></div>
+        <div className='aceleration_value'>{ `Aceleración: ${ acelerationValue.toFixed(3) }% la velocidad de la luz` }</div>
 			</div>
     </>
   );
