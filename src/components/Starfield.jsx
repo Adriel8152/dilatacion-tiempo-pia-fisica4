@@ -10,23 +10,38 @@ export const Starfield = ( props ) => {
   const starfieldAnimation = mixer.clipAction(animations[0]);
   const hyperspeedAnimation = mixer.clipAction(animations[1]);
 
+	let actualState = null;
 
-  useFrame((state, delta) => {
 
-		if(props.animation === props.animations.stop)  {
-			starfieldAnimation.stop();
-			hyperspeedAnimation.stop();
-		}
+  useFrame((state, delta, frame) => {
 
-		if(props.animation === props.animations.starfield) {
-			hyperspeedAnimation.stop();
-			starfieldAnimation.play();
-		}
+		// if( props.animation === props.animations.stop )  {
+		// 	starfieldAnimation.stop();
+		// 	hyperspeedAnimation.stop();
+		// }
 
-		if(props.animation === props.animations.hyperspeed) {
-			starfieldAnimation.stop();
-			hyperspeedAnimation.play();
-		}
+		// if( props.animation === props.animations.starfield ) {
+		// 	hyperspeedAnimation.stop();
+		// 	starfieldAnimation.play();
+		// }
+
+		// if( props.animation === props.animations.hyperspeed ) {
+		// 	starfieldAnimation.stop();
+		// 	hyperspeedAnimation.play();
+		// }
+
+		// starfieldAnimation.play();
+
+		starfieldAnimation.startAt(1)
+
+		// starfieldAnimation.timeScale = props.acelerationValue;
+		// if( state !== actualState ) {
+		// 	actualState = state;
+		// 	// console.log("State: ", actualState);
+		// 	// console.log("Delta: ", delta);
+		// 	console.log("Frame: ", frame);
+		// 	console.log("StarfieldAnimation: ", starfieldAnimation);
+		// }
 
     mixer.update(delta);
   });

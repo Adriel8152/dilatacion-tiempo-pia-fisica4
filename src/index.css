@@ -12,16 +12,32 @@ body,
 }
 
 .controls {
+  display: flex;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.controls * {
   width: fit-content;
   height: fit-content;
   min-width: unset !important;
   min-height: unset !important;
-  display: flex;
-  justify-content: row nowrap;
-  gap: 8px;
-  margin: 8px;
+  pointer-events: all;
 }
 
-.controls button {
-  padding: 4px 10px;
+.controls .acelerator {
+  transform: rotateZ(270deg);
+  position: absolute;
+  bottom: 100px;
+  left: -40px;
+}
+
+.aceleration_value {
+  font-weight: bold;
+  color: white;
 }

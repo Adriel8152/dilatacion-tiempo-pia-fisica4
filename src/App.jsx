@@ -9,7 +9,15 @@ const animations = {
 }
 
 function App() {
-  const [animation, setAnimation] = useState(animations.stop)
+  const [animation, setAnimation] = useState(animations.starfield)
+
+  const [acelerationValue, setAcelerationValue] = useState(0)
+
+  const handleAceleration = (event) => {
+    const aceleration = Math.pow((event.target.value / 101), 2);
+    
+    setAcelerationValue(aceleration);
+  };
 
   return (
     <>
@@ -17,14 +25,13 @@ function App() {
         <color attach="background" args={["black"]} />
 
         <Suspense fallback={<Loader />}>
-          <Starfield animation={animation} animations={animations} />
+          <Starfield animation={animation} animations={animations} acelerationValue={acelerationValue} />
         </Suspense>
       </Canvas>
 
-      <div className='controls' style={{position: 'absolute', top: 0, zIndex: 1000,}}>
-				<button onClick={() => {setAnimation(animations.stop)}}>Detener</button>
-				<button onClick={() => {setAnimation(animations.starfield)}}>Starfield</button>
-				<button onClick={() => {setAnimation(animations.hyperspeed)}}>Hyperspeed</button>
+      <div className='controls'>
+        <div className='acelerator'><input type="range" onChange={handleAceleration} defaultValue={0} /></div>
+        <div className='aceleration_value'>{ `Aceleración: ${acelerationValue}` }</div>
 			</div>
     </>
   );
