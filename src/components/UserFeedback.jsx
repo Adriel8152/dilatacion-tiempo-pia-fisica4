@@ -36,9 +36,9 @@ export const UserFeedback = ({ startTime }) => {
 	return (
 		<>
 			<div className='info'>
-				<div className='aceleration_value'>{ `Velocidad: ${ speed }% la velocidad de la luz` }</div>
-				<div>{`Años transcurridos en la Nave: ${ parseInt( shipTime ).toFixed() } `}</div>
-				<div>{`Años transcurridos en la Tierra: ${ parseInt( earthTime ).toFixed() } `}</div>
+				<div className='aceleration_value'>{ `Velocidad: ${ speed > 0 ? speed : -speed }% la velocidad de la luz` }</div>
+				<div>{`Años transcurridos en la Nave: ${ parseInt( shipTime ).toFixed() } años`}</div>
+				<div>{`Años transcurridos en la Tierra: ${ parseInt( earthTime ).toFixed() } años`}</div>
 			</div>
 		</>
 	)

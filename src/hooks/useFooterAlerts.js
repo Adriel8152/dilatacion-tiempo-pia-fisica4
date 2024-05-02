@@ -25,7 +25,7 @@ export const useFooterAlerts = () => {
 				<br />
 				<p style="text-align: justify">¡Y eso no es todo! Si quiere explorar más, puede acceder al repositorio del proyecto a través de este enlace:</p>
 				<br />
-				<p style="text-align: justify"><a href="#">Link al repositorio</a></p>
+				<p style="text-align: justify"><a target="_blank" rel="norreferer noopener" href="https://github.com/Adriel8152/dilatacion-tiempo-pia-fisica4">Repositorio en Github</a></p>
 			`,
 			customClass: {
 				confirmButton: 'confirmButton',
@@ -60,7 +60,7 @@ export const useFooterAlerts = () => {
 					<tr>
 						<td style="text-align: left">Developer</td>
 						<td style="text-align: left">Rogelio Villa</td>
-						<td style="text-align: left"> - </td>
+						<td style="text-align: left">2131949</td>
 					</tr>
 					<tr>
 						<td style="text-align: left">Tech Scout</td>
