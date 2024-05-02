@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { truncateToDecimals } from "../utils";
 import { useUserfeedback } from "../hooks";
 
-export const UserFeedback = () => {
+export const UserFeedback = ({ startTime }) => {
 	const { getShipElapsedTime, getEarthElapsedTime } = useUserfeedback();
 
 	const [speed, setSpeed] = useState( 0 );
@@ -10,6 +10,8 @@ export const UserFeedback = () => {
 	const [earthTime, setEarthTime] = useState( 0 )
 
 	useEffect( () => {
+		if( !startTime ) return;
+
 		const intervalId = setInterval( () => {
 			const LOCALE_SPEED = ( window.localStorage.getItem( 'speed' ) * 1000 );
 
@@ -29,7 +31,7 @@ export const UserFeedback = () => {
 		return () => {
 			clearInterval( intervalId );
 		}
-	}, [] )
+	}, [ startTime ] )
 
 	return (
 		<>
