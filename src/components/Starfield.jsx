@@ -2,12 +2,12 @@ import * as THREE from 'three';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useSpeed } from '../hooks';
+import { useUserfeedback } from '../hooks';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 export const Starfield = forwardRef(( {}, ref ) => {
 	const { scene, animations } = useLoader( GLTFLoader, '/models/starfield/scene.gltf' );
-	const { calculateSpeed } = useSpeed();
+	const { calculateSpeed } = useUserfeedback();
 
 	const acelerationRef = useRef(0);
 
@@ -35,7 +35,7 @@ export const Starfield = forwardRef(( {}, ref ) => {
 
 	return (
 		<>
-			<OrbitControls />
+			<OrbitControls enableZoom={ false } />
 
 			<primitive object={scene} />
 		</>

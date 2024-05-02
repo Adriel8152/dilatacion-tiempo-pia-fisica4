@@ -1,10 +1,9 @@
 import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Controls, Loader, Starfield, SpeedFeedback } from './components';
+import { Controls, Loader, Starfield, UserFeedback } from './components';
 
 function App() {
   const starfieldRef = useRef();
-
 
   const handleAcelerationChange = (event) => {
     const aceleratorInput = event.target;
@@ -15,9 +14,9 @@ function App() {
 
   return (
     <>
-      <SpeedFeedback />
+      <UserFeedback />
 
-      <Canvas camera={{fov: 75, near: 0.1, far: 5000, position: [0, 0, -1]}} style={{minWidth: '100vw', minHeight: '100vh'}}>
+      <Canvas camera={{fov: 75, near: 0.1, far: 5000, position: [0, 0, -1]}} style={{width: '100vw', height: '100vh'}}>
         <color attach="background" args={["black"]} />
 
         <Suspense fallback={<Loader />}>
