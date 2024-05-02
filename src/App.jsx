@@ -1,23 +1,43 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useRef, useState, useImperativeHandle } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Loader, Starfield } from './components';
+import { Loader } from './components';
+import Starfield from './components/Starfield';
 
-const animations = {
+const playableAnimations = {
   stop: 0,
   starfield: 1,
   hyperspeed: 2,
 }
 
 function App() {
-  const [animation, setAnimation] = useState(animations.starfield)
+  const [currentAnimation, setCurrentAnimation] = useState( playableAnimations.starfield )
+  // const [aceleration, setAceleration] = useState( 0 );
+  const acelerationRef = useRef( 0 );
+  const starfieldRef = useRef();
+  // const [speed, setSpeed] = useState( 0 )
 
-  const [acelerationValue, setAcelerationValue] = useState(0)
+  // const { calculateSpeed } = useSpeed();
+
+
+  // let speed = 0;
+  const speedRef = useRef(0);
 
   const handleAceleration = (event) => {
-    const aceleration = (event.target.value / 1001);
-    
-    setAcelerationValue(aceleration);
+    const aceleratorInput = event.target.value;
+    // setAceleration( ( event.target.value / 1000000) - 0.00005 );
+    // acelerationRef.current = ( event.target.value / 1000000) - 0.00005;
+    // console.log(acelerationRef.current);
+    starfieldRef.current.updateAceleration( ( aceleratorInput / 10000000) - 0.000005 );
   };
+
+  const onChangeSpeed = (speedParam) => {
+    speedRef.current = speedParam;
+
+    // setSpeed((previousSpeed) => speedParam);
+  }
+
+
+
 
   return (
     <>
@@ -25,13 +45,13 @@ function App() {
         <color attach="background" args={["black"]} />
 
         <Suspense fallback={<Loader />}>
-          <Starfield animation={ animation } animations={ animations } acelerationValue={ acelerationValue } />
+          <Starfield ref={ starfieldRef } currentAnimation={ currentAnimation } animations={ playableAnimations } aceleration={ acelerationRef.current } onChangeSpeed={ onChangeSpeed } />
         </Suspense>
       </Canvas>
 
       <div className='controls'>
-        <div className='acelerator'><input type="range" onChange={ handleAceleration } defaultValue={0} /></div>
-        <div className='aceleration_value'>{ `Aceleración: ${ acelerationValue.toFixed(3) }% la velocidad de la luz` }</div>
+        <div className='acelerator'><input type="range" onChange={ handleAceleration } defaultValue={50} /></div>
+        <div className='aceleration_value'>{ `Velocidad: ${ 0 }% la velocidad de la luz` }</div>
 			</div>
     </>
   );
