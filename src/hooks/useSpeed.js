@@ -1,14 +1,13 @@
 export const useSpeed = () => {
-	const maxSpeed = 0.1;
+	const maxSpeed = 0.099999;
 	let speed = 0;
+
 
 	const calculateSpeed = ( { aceleration = 0 } ) => {
 
-		if(speed > (-1 * maxSpeed) && speed < maxSpeed) {
-			speed += aceleration;
-			
-			// console.log("Speed: ", speed);
-		}
+		speed += aceleration;
+
+	  speed = Math.max(-maxSpeed, Math.min(maxSpeed, speed));
 
 		return speed;
 	}
