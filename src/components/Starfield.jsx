@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useSpeed } from '../hooks';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 
-export const Starfield = forwardRef(( { currentAnimation, playableAnimations }, ref ) => {
+export const Starfield = forwardRef(( {}, ref ) => {
 	const { scene, animations } = useLoader( GLTFLoader, '/models/starfield/scene.gltf' );
 	const { calculateSpeed } = useSpeed();
 
@@ -22,13 +22,15 @@ export const Starfield = forwardRef(( { currentAnimation, playableAnimations }, 
   }));
 	
 
-  useFrame((state, delta, frame) => {
-		const speed = calculateSpeed( { aceleration: acelerationRef.current } );
+  useFrame( () => {
+		const LOCALE_SPEED = calculateSpeed( { aceleration: acelerationRef.current } );
+
+		window.localStorage.setItem('speed', LOCALE_SPEED);
 		
 		starfieldAnimation.play();
 		
-    mixer.update( speed );
-  });
+    mixer.update( LOCALE_SPEED );
+  } );
 
 
 	return (
@@ -41,5 +43,3 @@ export const Starfield = forwardRef(( { currentAnimation, playableAnimations }, 
 });
 
 useGLTF.preload('/models/starfield/scene.gltf');
-
-export default Starfield;

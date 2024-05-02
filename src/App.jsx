@@ -1,7 +1,6 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Controls, Loader, Starfield, SpeedFeedback } from './components';
-import { playableAnimations } from './utils';
 
 function App() {
   const starfieldRef = useRef();
@@ -10,7 +9,7 @@ function App() {
   const handleAcelerationChange = (event) => {
     const aceleratorInput = event.target;
 
-    starfieldRef.current.updateAceleration( ( aceleratorInput.value / 10000000) - 0.000005 );
+    starfieldRef.current.updateAceleration( ( aceleratorInput.value / 1000000) - 0.00005 );
   };
 
 
@@ -22,7 +21,7 @@ function App() {
         <color attach="background" args={["black"]} />
 
         <Suspense fallback={<Loader />}>
-          <Starfield ref={ starfieldRef } currentAnimation={ playableAnimations.starfield } animations={ playableAnimations } />
+          <Starfield ref={ starfieldRef } />
         </Suspense>
       </Canvas>
 
