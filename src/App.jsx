@@ -1,6 +1,6 @@
 import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Controls, Loader, Starfield, UserFeedback } from './components';
+import { Controls, Loader, Starfield, UserFeedback, Footer } from './components';
 
 function App() {
   const starfieldRef = useRef();
@@ -25,6 +25,7 @@ function App() {
       </Canvas>
 
       <Controls handleAcelerationChange={ handleAcelerationChange } />
+      <Footer />
     </>
   );
 }
