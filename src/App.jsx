@@ -1,6 +1,6 @@
 import { Suspense, useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Controls, Loader, Starfield, UserFeedback, Footer } from './components';
+import { Controls, Loader, Starfield, UserFeedback, Footer, Starship } from './components';
 import { Steps } from 'intro.js-react';
 import { useTutorialsteps } from './hooks';
 
@@ -40,9 +40,11 @@ function App() {
 
       <Canvas camera={{fov: 75, near: 0.1, far: 5000, position: [0, 0, -1]}} style={{width: '100vw', height: '100vh'}}>
         <color attach="background" args={["black"]} />
+        <pointLight position={[0, 0.3, -0.35]} />
 
         <Suspense fallback={<Loader />}>
           <Starfield ref={ starfieldRef } />
+          <Starship />
         </Suspense>
       </Canvas>
 
