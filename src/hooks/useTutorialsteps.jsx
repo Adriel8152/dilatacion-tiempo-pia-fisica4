@@ -26,6 +26,16 @@ export const useTutorialsteps = () => {
 			tooltipClass: 'tutorial'
 		},
 		{
+			element: '.photo_container',
+			intro:
+				<>
+					<p>Este simulador te permitirá observar cómo el paso del tiempo afecta a cada gemelo de manera diferente debido a la teoría de la relatividad.</p>
+					
+					<p>Aquí podrás observar el impacto de la dilatación del tiempo entre los dos gemelos.</p>
+				</>,
+			tooltipClass: 'tutorial'
+		},
+		{
 			element: '.info',
 			intro:
 				<>

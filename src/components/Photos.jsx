@@ -15,9 +15,6 @@ import t6 from '../assets/persona/t6.jpg';
 import t7 from '../assets/persona/t7.jpg';
 
 
-const startshipPhotos = [ n1, n2, n3, n4, n5, n6, n7 ];
-const earthPhotos = [ t1, t2, t3, t4, t5, t6, t7 ];
-
 export function Photos() {
 	const [shipTime, setShipTime] = useState( 13 );
 	const [earthTime, setEarthTime] = useState( 13 );
@@ -30,43 +27,82 @@ export function Photos() {
 	const [earthPhoto, setEarthPhoto] = useState( t1 );
 	
 	const changeShipPhoto = (age) => {
-		if (age < 18) {
-			setShipPhoto(n1);
-		} else if (age < 30) {
-			setShipPhoto(n2);
-		} else if (age < 45) {
-			setShipPhoto(n3);
-		} else if (age < 50) {
-			setShipPhoto(n4);
-		} else if (age < 65) {
-			setShipPhoto(n5);
-		} else if (age < 94) {
-			setShipPhoto(n6);
-		} else if (age >= 95) {
-			setShipPhoto(n7);
+		if( age < 18 ) {
+			setShipPhoto( n1 );
+			return;
+		}
+		
+		if( age < 30 ) {
+			setShipPhoto( n2 );
+			return;
 		}
 
-		if( age > 100 ) setShipIsDeath( true );
+		if( age < 45 ) {
+			setShipPhoto( n3 );
+			return;
+		}
+
+		if( age < 50 ) {
+			setShipPhoto( n4 );
+			return;
+		}
+		
+		if( age < 65 ) {
+			setShipPhoto( n5 );
+			return;
+		}
+		
+		if( age < 94 ) {
+			setShipPhoto( n6 );
+			return;
+		}
+		
+		if( age >= 95 ) {
+			if( age > 105 ) setShipIsDeath( true );
+			setShipPhoto( n7 );
+			return;
+		}
+		
 	};
 
 	const changeEarthPhoto = (age) => {
-		if (age < 18) {
+		if( age < 18 ) {
 			setEarthPhoto( t1 );
-		} else if (age < 30) {
-			setEarthPhoto( t2 );
-		} else if (age < 45) {
-			setEarthPhoto( t3 );
-		} else if (age < 50) {
-			setEarthPhoto( t4 );
-		} else if (age < 65) {
-			setEarthPhoto( t5 );
-		} else if (age < 94) {
-			setEarthPhoto( t6 );
-		} else if (age >= 95) {
-			setEarthPhoto( t7 );
+			console.log( 't1', t1 );
+			return;
 		}
 
-		if( age > 100 ) setEarthIsDeath( true );
+		if( age < 30 ) {
+			setEarthPhoto( t2 );
+			return;
+		}
+
+		if( age < 45 ) {
+			setEarthPhoto( t3 );
+			return;
+		}
+
+		if( age < 50 ) {
+			setEarthPhoto( t4 );
+			return;
+		}
+
+		if( age < 65 ) {
+			setEarthPhoto( t5 );
+			return;
+		}
+		
+		if( age < 94 ) {
+			setEarthPhoto( t6 );
+			return;
+		}
+		
+		if( age >= 95 ) {
+			setEarthPhoto( t7 );
+			if( age > 105 ) setEarthIsDeath( true );
+			return;
+		}
+		
 	};
 
 	useEffect( () => {
@@ -76,8 +112,8 @@ export function Photos() {
 			
 			if( !earthIsDeath ) setEarthTime( window.localStorage.getItem( 'earthTime' ) );
 
-			changeShipPhoto( parseInt( window.localStorage.getItem( 'shipTime' ) + 13 ) );
-			changeEarthPhoto( parseInt( window.localStorage.getItem( 'earthTime' ) + 13 ) );
+			changeShipPhoto( parseInt( window.localStorage.getItem( 'shipTime' ) ) + 13);
+			changeEarthPhoto( parseInt( window.localStorage.getItem( 'earthTime' ) ) + 13 );
 
 		}, 1000 );
 
