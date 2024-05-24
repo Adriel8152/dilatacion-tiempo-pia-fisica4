@@ -8,7 +8,9 @@ export const useTutorialsteps = () => {
 					<br />
 					<p>Estamos emocionados de tenerte a bordo 👩‍🚀.</p>
 					<br />
-					<p>A continuación, te mostraremos las características de tu nave espacial para que estés listo para despegar.</p>
+					<p>Este simulador nos ayudará a apreciar de diferentes formas la dilatación del tiempo, utilizando la siguiente fórmula.</p>
+					<br />
+					<p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}><center>{`T_1 = T_2 / (sqrt [ 1 - { v^2 / c^2 } ] )`}</center></p>
 				</>,
 			tooltipClass: 'tutorial'
 		},
