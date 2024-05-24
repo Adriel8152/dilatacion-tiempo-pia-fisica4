@@ -23,6 +23,9 @@ export const UserFeedback = ({ startTime }) => {
 
 			setEarthTime(getEarthElapsedTime( parseInt(getShipElapsedTime()), parseFloat(LOCALE_SPEED) ));
 
+			window?.localStorage.setItem( 'shipTime', getShipElapsedTime() );
+			window?.localStorage.setItem( 'earthTime', getEarthElapsedTime( parseInt(getShipElapsedTime()), parseFloat(LOCALE_SPEED) ) );
+
 			// console.log( 'getShipElapsedtime', parseInt( getShipElapsedTime() ) );
 			// console.log( 'LOCALE_SPEED', parseInt( LOCALE_SPEED ) );
 

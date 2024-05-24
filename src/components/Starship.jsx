@@ -22,7 +22,7 @@ export const Starship = () => {
 	
 
   useFrame( () => {
-    mixer.update( );
+    mixer.update();
   } );
 
 

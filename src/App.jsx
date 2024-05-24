@@ -1,19 +1,20 @@
 import { Suspense, useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Controls, Loader, Starfield, UserFeedback, Footer, Starship } from './components';
+import { Controls, Loader, Starfield, UserFeedback, Footer, Starship, Photos } from './components';
 import { Steps } from 'intro.js-react';
 import { useTutorialsteps } from './hooks';
 
 function App() {
   const [showTutorial, setShowTutorial] = useState( false );
   const [startTime, setStartTime] = useState( false );
+  
   const starfieldRef = useRef();
   const { steps } = useTutorialsteps();
 
   const handleAcelerationChange = (event) => {
     const aceleratorInput = event.target;
 
-    starfieldRef.current.updateAceleration( ( aceleratorInput.value / 1000000) - 0.00005 );
+    starfieldRef.current.updateAceleration( ( ( aceleratorInput.value / 1000000) - 0.00005 ) * 0.8 );
   };
 
   const handleCloseTutorial = () => {
@@ -22,6 +23,10 @@ function App() {
   }
 
   useEffect( () => {
+    window.localStorage.setItem( 'speed', 0 );
+    window.localStorage.setItem( 'shipTime', 0 );
+    window.localStorage.setItem( 'earthTime', 0 );
+
     setShowTutorial( true );
   }, [] );
 
@@ -49,6 +54,7 @@ function App() {
       </Canvas>
 
       <Controls handleAcelerationChange={ handleAcelerationChange } />
+      <Photos />
       <Footer />
     </>
   );

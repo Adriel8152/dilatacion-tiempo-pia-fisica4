@@ -4,3 +4,4 @@ export * from './Starship';
 export * from './Controls';
 export * from './UserFeedback';
 export * from './Footer';
+export * from './Photos';
