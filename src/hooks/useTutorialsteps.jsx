@@ -1,3 +1,5 @@
+import formula from '../assets/dil-tiempo-1.jpg';
+
 export const useTutorialsteps = () => {
 	const steps = [
 		{
@@ -10,7 +12,7 @@ export const useTutorialsteps = () => {
 					<br />
 					<p>Este simulador nos ayudará a apreciar de diferentes formas la dilatación del tiempo, utilizando la siguiente fórmula.</p>
 					<br />
-					<p style={{ fontWeight: 'bold', fontSize: '1.1rem' }}><center>{`T_1 = T_2 / (sqrt [ 1 - { v^2 / c^2 } ] )`}</center></p>
+					<div><center><img src={ formula } width={100} /></center></div>
 				</>,
 			tooltipClass: 'tutorial'
 		},
