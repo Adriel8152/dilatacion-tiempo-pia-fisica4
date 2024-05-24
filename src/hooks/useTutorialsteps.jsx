@@ -1,4 +1,4 @@
-import formula from '../assets/dil-tiempo-1.jpg';
+import formula from '../assets/dil-tiempo-1.jpeg';
 
 export const useTutorialsteps = () => {
 	const steps = [
@@ -12,7 +12,7 @@ export const useTutorialsteps = () => {
 					<br />
 					<p>Este simulador nos ayudará a apreciar de diferentes formas la dilatación del tiempo, utilizando la siguiente fórmula.</p>
 					<br />
-					<div><center><img src={ formula } width={100} /></center></div>
+					<div><center><img src={ formula } width={150} /></center></div>
 				</>,
 			tooltipClass: 'tutorial'
 		},
